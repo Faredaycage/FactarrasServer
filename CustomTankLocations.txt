@@ -1,0 +1,7 @@
+The "HeavyGunner" is found on line 1388 in definitions.js
+
+Flockshot is found on line 3176 in definitions.js
+
+Rocket Launcher is found on line 1438 in definitions.js
+
+AC Carrier is on 2932

@@ -1,0 +1,36 @@
+To all devs, always check this file for other devs posting To-do's if there is no work to be done.
+Check gameChangeLogs.txt for info on what changed recently.
+Mark changes in the log with [Completed] and add it to gameChangeLogs.txt if the task is done.
+The log will be removed from the log once a moderator sees it has been completed.
+-NovaStorm93
+
+
+
+
+
+
+### TO-DO LIST
+Balance change sentries, beta + alpha pents, and crashers to properly scale correctly with damage
+Make compass ignore shapes. 
+Implement "Dead" and "Boss" zones, check syntax for more information
+Make it so you can't spawn on walls.
+Add Gunship, AC-Carrier, and BA-Carrier/TA-Carrier
+
+Find where terrain generation is located and modify/add to it. Likely in server.js but unknown where
+Balance AC-Carrier and add it's upgrades.
+Balance many older tanks to be viable, such as clockworks and Auto-Rocket [Awaiting Re-Name]
+
+
+### Long-Term
+make maze-like walls possible
+add new tanks
+add new bosses
+add new names for AI
+add new names for Bosses (Suggestions would be appreciated)
+|(Boss names suggestions)
+|
+|
+|
+
+
+

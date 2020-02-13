@@ -1,0 +1,17 @@
+aG### To all devs, add date in MM/DD/YYYY format, then the change, and your name. Example below
+YOU MUST REPORT ALL CHANGES HERE, EVEN BALANCE AND NUMBER CHANGES
+
+### Changelogs
+02/10/2020: Fixed server loading issues -Nova
+02/10/2020: Added New AI + Boss names -Nova
+02/10/2020: Buffed sentry attacks. -Nova [DID NOT nerf sentry body damage, still overpowered AF]
+02/10/2020: Balanced MLRS tank. -Noobie/Nova
+02/10/2020: Added some new AI names. -Noobie
+02/10/2020: MLRS asthetic finished. -Noobie
+02/10/2020: 1st version of compass added. -Noobie
+02/11/2020: Renamed "SyntaxStuff" to "Directory" -Nova [Yes]
+02/11/2020: Changed start screen name on client to "Factarras Arras" -Noobie
+02/12/2020: Chain Gunner added. -Noobie
+02/13/2020: AC-Carrier added, as were It's planes; Mostly finished and awaiting balance. -Noobie/Nova
+
+

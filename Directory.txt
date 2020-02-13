@@ -1,0 +1,18 @@
+sLine 25-30 of config.json
+
+// Yeah in server.js i think with all the definitons of "roud","norm", and "nest"]
+// So I then assume that I could create special maze properties for the factory.
+// "norm" is normal polygons, no special features
+// "nest" is the pentagon nests with crashers
+// "roid" are rocks, those grey polygons that block bullets/movement
+// "wall" are blocks to create a maze. AI *may* get stuck on them. try disabeling 
+// "dead" is an area devoid of polygons, an "ecological dead zone" so to speak. Bosses spawn in these zones and move to "boss" zones
+// "boss" is a region bosses move to once they spawn, to give a heatmap with challenge depending on the zone
+// "droi" is is just Roid with no shape spawns. I dont think that roids can spawn shapes but may be nessecary
+
+
+//Skill point award levels are at line 842 in server.js
+
+// proof of concept, can be refined.
+
+Special syntax objects must from now on be posted in this document, as of 02/10/2020. -Noobieboi
