@@ -3061,15 +3061,21 @@ const sockets = (() => {
                         player.body.skill.maintain();
                         player.body.refreshBodyAttributes();
                     } }
-                } break;
-                case '0': { // testbed cheat
+                } break;               case '0': { // testbed cheat
                     if (m.length !== 0) { socket.kick('Ill-sized testbed request.'); return 1; }
+          
                     // cheatingbois
                     if (player.body != null) { if (socket.key === process.env.SECRET) {
-                        player.body.define(Class.testbed);
-                    } }
+                        player.body.define(Class.testbed); //developers use this code
+                      
+                    if (player.body != null) { if (socket.key === process.env.PLAYTESTER) {
+                        player.body.define(Class.playtestbed); //playtesters use this code
+                      //so this should work if we implemnt the playtestbed class. give them access to beta tanks, we dont have
+                      //to do that much extra work, just give them access to beta" but not debug or daft
+                      
+                    } } } }
                 } break;
-                default: socket.kick('Bad packet index.');
+                default: socket.kick('Bad packet index.');//something on this line
                 }
             }
             // Monitor traffic and handle inactivity disconnects
@@ -3101,7 +3107,7 @@ const sockets = (() => {
                 let newgui = (() => {
                     // This is because I love to cheat
                     // Define a little thing that should automatically keep
-                    // track of whether or not it needs to be updated
+                     // track of whether or not it needs to be updated
                     function floppy(value = null) {
                         let flagged = true;
                         return {

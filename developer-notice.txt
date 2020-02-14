@@ -1,0 +1,3 @@
+TO ALL DEVS:
+The server has switched to heroku for hosting, this means that the TESTBED BETA tank branch no longer needs to be used, as I (NoobieBoi) will update the server when it is ready.
+-NoobieBoi
