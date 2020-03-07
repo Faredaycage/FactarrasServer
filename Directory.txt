@@ -12,8 +12,7 @@ sLine 25-30 of config.json
 
 
 //Skill point award levels are at line 842 in server.js
-//playtesters line 1884
-//Server Playtester Keys line 3065
-//
+
+// proof of concept, can be refined.
 
 Special syntax objects must from now on be posted in this document, as of 02/10/2020. -Noobieboi

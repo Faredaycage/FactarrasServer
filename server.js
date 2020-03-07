@@ -2,7 +2,7 @@
 /*jshint -W061 */
 /*global goog, Map, let */
 "use strict";
-
+var hpkills = 0;
 // General requires
 require('google-closure-library');
 goog.require('goog.structs.PriorityQueue');
@@ -2393,6 +2393,11 @@ class Entity {
                 if (this.type === 'tank') {
                     if (killers.length > 1) instance.killCount.assists++; else instance.killCount.solo++;
                 } else if (this.type === "miniboss") instance.killCount.bosses++;
+                if (this.type === 'food') {
+                  if(this.exports == 'hugepentagon') {
+                     hpkills += 1;
+                  }
+                }
             });
             // Add the killers to our death message, also send them a message
             if (notJustFood) {
@@ -2433,7 +2438,7 @@ class Entity {
                     usurptText = usurptText.slice(0, -4);
                     usurptText += '!';
                 } else {
-                    usurptText += ' fought a polygon... and the polygon won.';
+                    usurptText += ' died a death via polygon... how pitiful.';
                 }
                 sockets.broadcast(usurptText);
             }
@@ -3061,21 +3066,15 @@ const sockets = (() => {
                         player.body.skill.maintain();
                         player.body.refreshBodyAttributes();
                     } }
-                } break;               case '0': { // testbed cheat
+                } break;
+                case '0': { // testbed cheat
                     if (m.length !== 0) { socket.kick('Ill-sized testbed request.'); return 1; }
-          
                     // cheatingbois
                     if (player.body != null) { if (socket.key === process.env.SECRET) {
-                        player.body.define(Class.testbed); //developers use this code
-                      
-                    if (player.body != null) { if (socket.key === process.env.PLAYTESTER) {
-                        player.body.define(Class.playtestbed); //playtesters use this code
-                      //so this should work if we implemnt the playtestbed class. give them access to beta tanks, we dont have
-                      //to do that much extra work, just give them access to beta" but not debug or daft
-                      
-                    } } } }
+                        player.body.define(Class.testbed);
+                    } }
                 } break;
-                default: socket.kick('Bad packet index.');//something on this line
+                default: socket.kick('Bad packet index.');
                 }
             }
             // Monitor traffic and handle inactivity disconnects
@@ -3107,7 +3106,7 @@ const sockets = (() => {
                 let newgui = (() => {
                     // This is because I love to cheat
                     // Define a little thing that should automatically keep
-                     // track of whether or not it needs to be updated
+                    // track of whether or not it needs to be updated
                     function floppy(value = null) {
                         let flagged = true;
                         return {
@@ -4584,7 +4583,7 @@ var maintainloop = (() => {
                         arrival = names[0] + ' has arrived.'; 
                     } else {
                         begin = 'Visitors are coming.';
-                        arrival = '';
+                        arrival = 'The visitors have arived.';
                         for (let i=0; i<n-2; i++) arrival += names[i] + ', ';
                         arrival += names[n-2] + ' and ' + names[n-1] + ' have arrived.';
                     }
@@ -4850,7 +4849,7 @@ var maintainloop = (() => {
             /*********** ROT OLD SPAWNERS **********/
             foodSpawners.forEach(spawner => { if (ran.chance(1 - foodAmount/maxFood)) spawner.rot(); });
             /************** MAKE FOOD **************/
-            while (ran.chance(0.8 * (1 - foodAmount * foodAmount / maxFood / maxFood))) {
+            while (ran.chance(0.2 * (1 - foodAmount * foodAmount / maxFood / maxFood))) {
                 switch (ran.chooseChance(10, 2, 1)) {
                 case 0: makeGroupedFood(); break;
                 case 1: makeDistributedFood(); break;
@@ -4987,3 +4986,35 @@ let websockets = (() => {
 setInterval(gameloop, room.cycleSpeed);
 setInterval(maintainloop, 200);
 setInterval(speedcheckloop, 1000);
+
+if (hpkills >= 10)
+{
+var n = 0;
+var loc = 'norm';
+var bois = [Class.egg];
+var i = 0;
+var names = [];
+            let spawn = () => {
+                let spot, m = 0;
+                do {
+                    spot = room.randomType(loc); m++;
+                } while (dirtyCheck(spot, 500) && m<30);
+                let o = new Entity(spot);
+                    o.define(ran.choose(bois));
+                    o.team = -100;
+                    o.name = names[i++];
+            };
+var arival = "The pentagons have sent a barge for revenge."
+hpkills = hpkills - hpkills;
+console.log("10 alpha-pentagons have been killed, spawning a pentagon barge")
+                spawn: () => {
+                    sockets.broadcast("The pentagons want revenge.");
+                    for (let i=0; i<n; i++) {
+                        setTimeout(spawn, ran.randomRange(3500, 5000));
+                    }
+                    // Wrap things up.
+                    setTimeout(() => sockets.broadcast(arival), 5000);
+                    util.log('[SPAWN] ' + arival);
+                },
+console.log("pentagon barge has spawned")
+};
